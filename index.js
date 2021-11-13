@@ -13,7 +13,7 @@ app.get("/segunda-req", function(req, res) {
 })
 
 app.get("/com-parametros", function(req, res) {
-    res.send('Com parametros funciona!')
+    res.send('Com parametros funciona! bora viajar ' + req.query.nome);
 })
 
 
