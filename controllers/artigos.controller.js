@@ -1,0 +1,1 @@
+//regra de negocios do sistema de artigos
