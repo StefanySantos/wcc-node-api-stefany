@@ -1,4 +1,4 @@
-const { application } = require("express");
+const { application, response } = require("express");
 const express = require("express"); //importando o express
 const app = express();
 const port = 8080; //server node
@@ -9,8 +9,9 @@ const port = 8080; //server node
 app.use(express.json());
 
 
-app.get("/", function(req, res) {
-    res.send("Dasa Educa - Artigos");
+app.get("/", function(request, response) {
+    console.log(request.body)
+    response.send("Dasa Educa - Artigos");
 });
 
 
