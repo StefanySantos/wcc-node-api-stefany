@@ -1,6 +1,6 @@
 //configuração do banco de dados
 
-//instalar o dotenv - npm install --save dotenv
+//instalar o dotenv (biblioteca) - npm install --save dotenv
 
 const dotenv = require("dotenv");
 

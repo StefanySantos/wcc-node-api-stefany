@@ -20,7 +20,8 @@ module.exports = (app) => {
     const artigosController = require("../controllers/artigos.controller");
     let router = require("express").Router();
 
+    //chamando create da controller
     router.post("/", artigosController.create);
 
-    app.use(router)
+    app.use("/artigos", router);
 }

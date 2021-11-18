@@ -3,7 +3,7 @@ const Sequelize = require("sequelize");
 
 //conectando no banco
 const sequelizeOptions = { dialect: databaseConfig.dialect }
-const sequelizeDataBase = new Sequelize(databaseConfig.connectionStringUrl, connectionStringUrl, sequelizeOptions);
+const sequelizeDataBase = new Sequelize(databaseConfig.connectionStringUrl, sequelizeOptions);
 
 const database = {
     Sequelize: Sequelize,

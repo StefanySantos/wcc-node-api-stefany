@@ -3,6 +3,7 @@
 //titulo, descricao, publicado
 
 module.exports = (sequelizeDataBase, Sequelize) => {
+    //criando uma variavel que recebe uma tabela chamada 'artigo' que tera os campos 'titulo, descricao, publicado'
     const Artigo = sequelizeDataBase.define("artigos", {
         titulo: {
             type: Sequelize.STRING

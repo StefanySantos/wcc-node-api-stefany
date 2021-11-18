@@ -13,11 +13,15 @@ exports.create = (request, response) => {
         publicado: request.body.publicado
     };
 
-    //promise pode ou não ser resolvida
+    //promise pode ou não ser resolvida - e o tempo tambem varia podendo ou nao estourar um erro para o user
     tabelaArtigo.create(artigo)
         //entao crie o artigo e retorne o sucesso
         .then(() => response.send("Artigo criado com sucesso"))
         //caso nao de certo retorne o erro status 500
-        .catch(() => response.status(500).send("Ocorreu um erro ao salvar o artigo"))
+        .catch((error) => {
+            console.log(error);
+            response.status(500).send("Ocorreu um erro ao salvar o artigo");
+        })
+
 
 };
