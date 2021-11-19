@@ -23,7 +23,7 @@ module.exports = (app) => {
     //chamando create da controller
     router.post("/", artigosController.create);
     router.get("/findAll", artigosController.findAll);
-    router.get("/findByid/:id", artigosController.findById);
+    router.get("/findById/:id", artigosController.findById);
 
     app.use("/artigos", router);
 }
