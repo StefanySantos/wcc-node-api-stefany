@@ -25,3 +25,12 @@ module.exports = (app) => {
 
     app.use("/artigos", router);
 }
+
+//module.exports = (app) => {
+//    const artigosListaController = require("../controllers/artigos.controller");
+//    let router = require("express").Router();
+
+//    router.get("/", artigosListaController);
+
+//    app.use("/artigos", router);
+//}

@@ -1,6 +1,6 @@
 //regra de negocios do sistema de artigos
 
-const { response } = require("express");
+const { response, request } = require("express");
 const database = require("../models");
 const tabelaArtigo = database.artigos;
 
@@ -25,3 +25,12 @@ exports.create = (request, response) => {
 
 
 };
+
+exports.findAll = (request, response) => {
+    const artigoLista = artigoLista.findAll().then(function(data) {
+            response.send(data)
+        })
+        .catch(function() {
+            response.status(500).send("Ocorreu um erro obtendo os artigos")
+        });
+}
