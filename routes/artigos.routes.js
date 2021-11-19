@@ -22,15 +22,8 @@ module.exports = (app) => {
 
     //chamando create da controller
     router.post("/", artigosController.create);
+    router.get("/findAll", artigosController.findAll);
+    router.get("/findByid/:id", artigosController.findById);
 
     app.use("/artigos", router);
 }
-
-//module.exports = (app) => {
-//    const artigosListaController = require("../controllers/artigos.controller");
-//    let router = require("express").Router();
-
-//    router.get("/", artigosListaController);
-
-//    app.use("/artigos", router);
-//}
