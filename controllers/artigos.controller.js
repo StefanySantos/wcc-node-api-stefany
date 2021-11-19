@@ -27,10 +27,23 @@ exports.create = (request, response) => {
 };
 
 exports.findAll = (request, response) => {
-    const artigoLista = artigoLista.findAll().then(function(data) {
-            response.send(data)
-        })
-        .catch(function() {
+    const artigoLista = tabelaArtigo
+    .findAll()
+    .then((data) => response.send(data))
+        .catch((error) => {
+            console.log(error);
             response.status(500).send("Ocorreu um erro obtendo os artigos")
-        });
-}
+        
+        })
+};
+
+
+exports.findById = (request, response) =>{
+    const artigoFind = tabelaArtigo
+    .findOne({where: {id: request.param.id}})
+    .then((data) => response.send(data))
+        .catch((error) => {
+            console.log(error)
+            response.status(500).send("Ocorreu um erro ao encontrar o arquivo", {id})
+        })
+};
