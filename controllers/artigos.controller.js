@@ -27,23 +27,60 @@ exports.create = (request, response) => {
 };
 
 exports.findAll = (request, response) => {
-    const artigoLista = tabelaArtigo
-    .findAll()
-    .then((data) => response.send(data))
-        .catch((error) => {
+    tabelaArtigo.findAll()
+        .then(function(data) {
+            response.send(data)
+        })
+        .catch(function(error) {
             console.log(error);
             response.status(500).send("Ocorreu um erro obtendo os artigos")
-        
         })
 };
 
 
-exports.findById = (request, response) =>{
-    const artigoFind = tabelaArtigo
-    .findOne({where: {id: request.param.id}})
-    .then((data) => response.send(data))
-        .catch((error) => {
-            console.log(error)
-            response.status(500).send("Ocorreu um erro ao encontrar o arquivo", {id})
+exports.findById = (request, response) => {
+    const { id } = request.query;
+    tabelaArtigos.findByPk(id)
+        .then((data) => {
+            if (data) {
+                response.send(data);
+            } else {
+                response
+                    .status(404)
+                    .send(`Não foi possível encontrar nenhum artigo com o id ${id} `);
+            }
         })
+        .catch(() =>
+            res.status(500).send(`Ocorreu um erro ao buscar o artigo com o id ${id}`)
+        );
+};
+
+exports.findByTitulo = (req, res) => {
+    const { titulo } = req.query;
+    tabelaArtigos
+
+        .findOne({ where: { titulo } })
+        .then((data) => {
+            if (data) {
+                res.send(data);
+            } else {
+                res
+                    .status(404)
+                    .send(
+                        `Não foi possível encontrar nenhum artigo com o título ${titulo} `
+                    );
+            }
+        })
+        .catch(() =>
+            res
+            .status(500)
+            .send(`Ocorreu um erro ao buscar o artigo com o título ${titulo}`)
+        );
+};
+
+exports.update = (req, res) => {
+    tabelaArtigos
+        .update(req.body, { where: { id: req.params.id } })
+        .then((data) => res.send(data))
+        .catch(() => res.status(500).send("Ocorreu um erro "));
 };
