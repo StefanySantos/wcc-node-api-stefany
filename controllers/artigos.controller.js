@@ -13,6 +13,10 @@ exports.create = (request, response) => {
         publicado: request.body.publicado
     };
 
+    if (!artigo.titulo) {
+        return response.status(400).send("Voce precisa de um titulo")
+    }
+
     //promise pode ou não ser resolvida - e o tempo tambem varia podendo ou nao estourar um erro para o user
     tabelaArtigo.create(artigo)
         //entao crie o artigo e retorne o sucesso
@@ -37,7 +41,7 @@ exports.findAll = (request, response) => {
         })
 };
 
-
+//object destructuring ou desestruturação de objeto
 exports.findById = (request, response) => {
     const { id } = request.query;
     tabelaArtigo.findByPk(id)
@@ -51,7 +55,7 @@ exports.findById = (request, response) => {
             }
         })
         .catch(() =>
-            response.status(500).send(`Ocorreu um erro ao buscar o artigo com o id ${id}`)
+            response.status(500).send(`Ocorreu um erro ao buscar o artigo com esse id ${id}`)
         );
 };
 
@@ -64,7 +68,7 @@ exports.findByTitulo = (request, response) => {
             } else {
                 response
                     .status(404)
-                    .send(`Não foi possível encontrar nenhum artigo com o título ${titulo} `);
+                    .send(`Não foi possível encontrar nenhum artigo com esse título ${titulo} `);
             }
         })
         .catch(() =>

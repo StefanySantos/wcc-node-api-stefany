@@ -9,7 +9,10 @@ module.exports = (sequelizeDataBase, Sequelize) => {
             type: Sequelize.STRING
         },
         descricao: {
-            type: Sequelize.STRING
+            type: Sequelize.STRING,
+            allowNull: false,
+            //descrição padrão
+            defaultValue: "Artigo em construção"
         },
         publicado: {
             type: Sequelize.BOOLEAN

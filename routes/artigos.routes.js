@@ -23,8 +23,9 @@ module.exports = (app) => {
     //chamando create da controller
     router.post("/", artigosController.create);
     router.get("/findAll", artigosController.findAll);
-    router.get("/findById", artigosController.findById);
-    router.get("/findByTitulo", artigosController.findByTitulo);
+    router.get("/findByTitulo/:id", artigosController.findByTitulo);
+    router.get("/findById/", artigosController.findById);
+
 
     app.use("/artigos", router);
 }
